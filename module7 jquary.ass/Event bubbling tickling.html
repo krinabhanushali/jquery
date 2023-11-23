@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling Tickling</title>
+    <style>
+        .main, div, h1{
+            margin: 10px;
+        }
+        body{
+            color: red;
+            padding: 3px;
+        }
+        .css{
+            border: 2px solid red;
+        }
+        .main{
+            color: red;
+            width: 390px;
+            padding: 3px;
+        }
+        .sub_div{
+            color: red;
+            width: 360px;
+            padding: 3px;
+        }
+        .div{
+            color: red;
+            width: 330px;
+            padding: 3px;
+        }
+        h1{
+            color: gray;
+            border: 2px solid gray;
+            width: 300px;
+            padding: 3px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>body (great-great-grandparent)
+    <div class="main">div (great-grandparent)
+        <div class="sub_div">ul (grandparent)
+            <div class="div">li (direct parent)
+                <h1>span</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("h1").parents().addClass("css");
+        })
+    </script>
+</body>
+</html>
